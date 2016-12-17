@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="Final_Taareas.Diseño">
+ <MasterDetailPage.Master>
+    <ContentPage Title= "TAREAS">
+      <StackLayout Orientation="Vertical">        
+        <Label x:Name="name1" Text="Fernando" Font="Large" BackgroundColor="#81F79F" HorizontalOptions="Center"/>  
+        <Label x:Name="name2" Text="Mariano" Font="Large" BackgroundColor="#81F79F" HorizontalOptions="Center"/>  
+        <Label x:Name="name3" Text="Maliachi" Font="Large" BackgroundColor="#81F79F" HorizontalOptions="Center"/>  
+        
+          <Entry x:Name="search" TextChanged="buscar" Placeholder="..."/>
+         <Entry x:Name="search1" TextChanged="buscar1" Placeholder="..."/>
+          <Entry x:Name="search2" TextChanged="buscar2" Placeholder="..."/>
+        
+          <Button x:Name="refresh" Text="Borrar datos"  BorderColor="#FE2E64"  Clicked ="nuevo"/>
+
+         <ListView x:Name="List"  BackgroundColor="#E5CCFF" ItemSelected="selecciona"/>
+         <ListView x:Name="Lista1"  BackgroundColor="#E5CCFF"  ItemSelected="selecciona1"/>
+         <ListView x:Name="Lista2"  BackgroundColor="#E5CCFF"  ItemSelected="selecciona2"/>
+                
+    
+      </StackLayout>
+    </ContentPage>    
+  </MasterDetailPage.Master>
+ 
+  
+  <MasterDetailPage.Detail>
+    <ContentPage  Title="Generaros de Tareas" >
+      
+      <StackLayout Orientation="Vertical" BackgroundColor="#CCFFE5">
+
+        <Grid x:Name="tabla1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lb1" Text="Titulo:" TextColor="#0000FF" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" />
+            <Entry x:Name="titulotxt" BackgroundColor="#7F1000" TextColor="White" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="0"/>
+            
+        <Label x:Name="lb2" Text="Descripcion:" TextColor="#0000FF"  HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18"/>
+            <Editor x:Name="descritxt" BackgroundColor="#7F1000" TextColor="White" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="4" Grid.Column="0"/>
+            
+        <Label x:Name="lb3" Text="Encargad0:" TextColor="#0000FF"  HorizontalOptions="Center" Grid.Row="6" Grid.Column="0"  FontSize="18"/>
+            <Entry x:Name="personapic" BackgroundColor="#7F1000"  Grid.Row="7" Grid.Column="0" TextColor="White" Placeholder="CORREO USUARIO"/>
+        <Label x:Name="lb4" Text="Prioridad:" TextColor="#0000FF"  HorizontalOptions="Center" Grid.Row="6" Grid.Column="1" FontSize="18"/>
+           <Entry x:Name="prioripic" BackgroundColor="#7F1000" TextColor="White" Grid.Row="7" Grid.Column="1"  Placeholder="BAJA, MEDIA, ALTA"/>
+            
+         <Label x:Name="lb5" Text="Fecha:" TextColor="#0000FF"  HorizontalOptions="Center" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18"/>
+
+            <DatePicker x:Name="fechapick" Grid.ColumnSpan="2" Grid.Row="9" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
+            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+              <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                  <x:Arguments>
+                    <x:String>Jan 1 2000</x:String>
+                  </x:Arguments>
+                </sys:DateTime>
+              </DatePicker.MinimumDate>
+            <DatePicker.MaximumDate>
+              <sys:DateTime x:FactoryMethod="Parse">
+               <x:Arguments>
+               <x:String>Dec 31 2050</x:String>
+               </x:Arguments>
+               </sys:DateTime>
+            </DatePicker.MaximumDate>
+            </DatePicker>
+            
+          <Label x:Name="lb6" Text="Dependencia:" TextColor="#0000FF"  HorizontalOptions="Center" Grid.Row="10" Grid.Column="0" FontSize="18"/>
+            <Entry x:Name="depentxt" BackgroundColor="#7F1000" TextColor="White" Grid.Row="11" Grid.Column="0" />
+            
+          <Label x:Name="lb7" Text="Estatus:" TextColor="#0000FF"  HorizontalOptions="Center" Grid.Row="10" Grid.Column="1" FontSize="18"/>  
+            <Entry x:Name="statuspic"  BackgroundColor="#7F1000" TextColor="White" Grid.Row="11" Grid.Column="1" Placeholder="CREADA,EN EJECUCION, COMPLETADA, NO COMPLETADA" />
+                      
+            <Button x:Name="save" Text="Insertar" BorderColor="#7B68EE" TextColor="#660033" HorizontalOptions="Center" Grid.Row="2" Grid.Column="3" Clicked ="inserta"/>
+            <Button x:Name="update" Text="Actualizar" BorderColor="#7B68EE" TextColor="#660033" HorizontalOptions="Center" Grid.Row="4" Grid.Column="3" Clicked ="actualizar"/>           
+            <Button x:Name="delete" Text="Eliminar" BorderColor="#7B68EE" TextColor="#660033" HorizontalOptions="Center" Grid.Row="6" Grid.Column="3" Clicked ="borrar"/>
+            <Button x:Name="btnsalir" Text="Salir" BorderColor="#7B68EE" TextColor="#660033" HorizontalOptions="Center" Grid.Row="8" Grid.Column="3" Clicked ="logout"/>
+
+              </Grid>
+        <Grid x:Name="tabla2">
+          <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+          <RowDefinition Height="auto" />
+                     <RowDefinition Height="auto" />
+                      </Grid.RowDefinitions>
+          
+           <Button x:Name="btnacceder" Text="Acceder" TextColor="#0000FF"   BorderColor="#7B68EE" Grid.Row="0" Grid.Column="0" Clicked ="log"/>
+          <Image x:Name="ima"  Source="LOGORI.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+        </Grid>
+
+      </StackLayout>
+    </ContentPage>
+  </MasterDetailPage.Detail>
+
+
+</MasterDetailPage>
